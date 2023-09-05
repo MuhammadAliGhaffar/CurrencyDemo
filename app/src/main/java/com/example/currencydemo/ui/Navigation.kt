@@ -33,7 +33,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.currencydemo.R
-import com.example.currencydemo.ui.theme.Orange
+import com.example.currencydemo.ui.theme.Bg
+import com.example.currencydemo.ui.theme.BorderStrokeColor
+import com.example.currencydemo.ui.theme.DividerColor
+import com.example.currencydemo.ui.theme.InnerContainerColor
+import com.example.currencydemo.ui.theme.RightContainerColor
+import com.example.currencydemo.ui.theme.TopContainerColor
+import com.example.currencydemo.ui.theme.boxWidth
+import com.example.currencydemo.ui.theme.dividerHeight
 import com.example.currencydemo.utilities.CURRENCY_SCREEN
 import com.example.currencydemo.utilities.HOME_SCREEN
 
@@ -62,10 +69,10 @@ fun currencyContainer(onClick: () -> Unit) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onClick() }
 //        .background(color = Color.LightGray)
 //            .border(width = 0.5.dp, color = Color.Gray)
-            .padding(16.dp)
-            .clickable { onClick() }
+            .padding(horizontal = 18.dp, vertical = 25.dp)
     ) {
         val (countryCode, countryImage, amount) = createRefs()
         Image(
@@ -75,7 +82,7 @@ fun currencyContainer(onClick: () -> Unit) {
             modifier = Modifier
                 .size(30.dp)
                 .clip(CircleShape)                       // clip to the circle shape
-                .border(2.dp, Color.Gray, CircleShape)
+                .border(1.dp, Color.White, CircleShape)
                 .constrainAs(countryImage) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
@@ -84,6 +91,7 @@ fun currencyContainer(onClick: () -> Unit) {
 
         Text(
             text = "USD",
+            color = Color.White,
             fontSize = 12.sp,
             fontWeight = FontWeight.Light,
             modifier = Modifier.constrainAs(countryCode) {
@@ -93,8 +101,9 @@ fun currencyContainer(onClick: () -> Unit) {
 
 
         Text(text = "1000".toFloat().toString(),
+            color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
+            fontSize = 30.sp,
             modifier = Modifier
                 .constrainAs(amount) {
                     end.linkTo(parent.end)
@@ -105,15 +114,15 @@ fun currencyContainer(onClick: () -> Unit) {
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxWidth().background(color = Bg)) {
         currencyContainer {
             Log.d("AliTag", "T1")
             navController.navigate(CURRENCY_SCREEN)
         }
         Divider(
-            color = Color.Gray,
+            color = DividerColor,
             modifier = Modifier
-                .height(1.dp)
+                .height(dividerHeight)
                 .fillMaxWidth()
         )
         currencyContainer {
@@ -121,177 +130,178 @@ fun HomeScreen(navController: NavController) {
             navController.navigate(CURRENCY_SCREEN)
         }
 //        Spacer(modifier = Modifier)
+//        First Row
         Row(modifier = Modifier.fillMaxWidth()) {
             BoxWithEqualWidth(
                 value = "C",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = TopContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
                 value = "1",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = TopContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "2",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = TopContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "3",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Orange)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = RightContainerColor)
+                    .padding(vertical = 25.dp)
+            )
+        }
+//        Second Row
+        Row(modifier = Modifier.fillMaxWidth()) {
+            BoxWithEqualWidth(
+                value = "5",
+                modifier = Modifier
+                    .weight(1f)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
+                    .padding(vertical = 25.dp)
+            )
+            BoxWithEqualWidth(
+                value = "6",
+                modifier = Modifier
+                    .weight(1f)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
+                    .padding(vertical = 25.dp)
+            )
+            BoxWithEqualWidth(
+                value = "7",
+                modifier = Modifier
+                    .weight(1f)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
+                    .padding(vertical = 25.dp)
+            )
+            BoxWithEqualWidth(
+                value = "8",
+                modifier = Modifier
+                    .weight(1f)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = RightContainerColor)
                     .padding(vertical = 25.dp)
             )
         }
 
         Row(modifier = Modifier.fillMaxWidth()) {
             BoxWithEqualWidth(
-                value = "C",
+                value = "9",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "10",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "11",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "12",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Orange)
-                    .padding(vertical = 25.dp)
-            )
-        }
-
-        Row(modifier = Modifier.fillMaxWidth()) {
-            BoxWithEqualWidth(
-                value = "C",
-                modifier = Modifier
-                    .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
-                    .padding(vertical = 25.dp)
-            )
-            BoxWithEqualWidth(
-                value = "1",
-                modifier = Modifier
-                    .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
-                    .padding(vertical = 25.dp)
-            )
-            BoxWithEqualWidth(
-                value = "1",
-                modifier = Modifier
-                    .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
-                    .padding(vertical = 25.dp)
-            )
-            BoxWithEqualWidth(
-                value = "1",
-                modifier = Modifier
-                    .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Orange)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = RightContainerColor)
                     .padding(vertical = 25.dp)
             )
         }
 
         Row(modifier = Modifier.fillMaxWidth()) {
             BoxWithEqualWidth(
-                value = "C",
+                value = "13",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "14",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "15",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "16",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Orange)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = RightContainerColor)
                     .padding(vertical = 25.dp)
             )
         }
 
         Row(modifier = Modifier.fillMaxWidth()) {
             BoxWithEqualWidth(
-                value = "C",
+                value = "17",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "18",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "19",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Color.DarkGray)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = InnerContainerColor)
                     .padding(vertical = 25.dp)
             )
             BoxWithEqualWidth(
-                value = "1",
+                value = "20",
                 modifier = Modifier
                     .weight(1f)
-                    .border(1.dp, Color.Gray)
-                    .background(color = Orange)
+                    .border(boxWidth, BorderStrokeColor)
+                    .background(color = RightContainerColor)
                     .padding(vertical = 25.dp)
             )
         }
