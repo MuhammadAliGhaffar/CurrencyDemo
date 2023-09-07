@@ -21,7 +21,7 @@ fun Navigation() {
             HomeScreen(navController)
         }
         composable(route = CURRENCY_SCREEN) {
-            CurrencyScreen()
+            CurrencyScreen(navController)
         }
     }
 }

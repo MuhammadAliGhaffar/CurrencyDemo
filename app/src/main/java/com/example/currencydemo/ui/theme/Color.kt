@@ -12,6 +12,7 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val RightContainerColor = Color(0xFFFF9C39)
+val BackButtonColor = Color(0xFFFF9C39)
 val TopContainerColor = Color(0xFF464646)
 val InnerContainerColor = Color(0xFF656565)
 val Bg = Color(0xFF363636)
