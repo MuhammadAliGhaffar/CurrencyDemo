@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -30,7 +31,6 @@ import com.example.currencydemo.ui.composables.CurrencyItemRow
 import com.example.currencydemo.ui.theme.Bg
 import com.example.currencydemo.ui.theme.DividerColor
 import com.example.currencydemo.ui.theme.dividerHeight
-import com.example.currencydemo.utilities.HOME_SCREEN
 
 @Composable
 fun CurrencyScreen(navController: NavController) {
@@ -59,7 +59,7 @@ fun CurrencyScreen(navController: NavController) {
                                 centerVerticallyTo(parent)
                             }
                             .clickable {
-                                navController.navigate(HOME_SCREEN)
+                                navController.navigateUp()
                             })
                     Text(
                         text = "Currencies",

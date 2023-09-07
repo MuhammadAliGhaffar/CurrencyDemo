@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true, widthDp = 360, heightDp = 800)
     @Composable
     fun AppView() {
-        Navigation(this)
+        Navigation()
     }
 }
 

@@ -1,9 +1,9 @@
 package com.example.currencydemo.ui.screens
 
-import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,7 +31,7 @@ import com.example.currencydemo.utilities.CURRENCY_SCREEN
 import com.example.currencydemo.utilities.Utils.toast
 
 @Composable
-fun HomeScreen(context: Context, navController: NavController) {
+fun HomeScreen(navController: NavController) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -77,6 +77,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "c",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "c Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = TopContainerColor)
                         .padding(vertical = 25.dp)
@@ -85,6 +88,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "←",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "← Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = TopContainerColor)
                         .padding(vertical = 25.dp)
@@ -93,14 +99,20 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "⇅",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "⇅ Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = TopContainerColor)
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "/",
+                    value = "÷",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "÷ Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = RightContainerColor)
                         .padding(vertical = 25.dp)
@@ -112,6 +124,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "7",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "7 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -120,6 +135,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "8",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "8 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -128,6 +146,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "9",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "9 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -136,6 +157,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "×",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "× Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = RightContainerColor)
                         .padding(vertical = 25.dp)
@@ -147,6 +171,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "4",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "4 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -155,6 +182,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "5",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "5 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -163,6 +193,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "6",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "6 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -171,6 +204,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "-",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "- Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = RightContainerColor)
                         .padding(vertical = 25.dp)
@@ -182,6 +218,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "1",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "1 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -190,6 +229,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "2",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "2 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -198,6 +240,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "3",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "3 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -206,6 +251,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "+",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "+ Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = RightContainerColor)
                         .padding(vertical = 25.dp)
@@ -217,6 +265,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "0",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "0 Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -225,6 +276,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = ".",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, ". Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -233,6 +287,9 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "%",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "% Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = InnerContainerColor)
                         .padding(vertical = 25.dp)
@@ -241,14 +298,19 @@ fun HomeScreen(context: Context, navController: NavController) {
                     value = "=",
                     modifier = Modifier
                         .weight(1f)
+                        .clickable {
+                            toast(navController.context, "= Click")
+                        }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = RightContainerColor)
                         .padding(vertical = 25.dp)
-                )
+                        ,
+
+                    )
             }
 
             BottomContainer(modifier = Modifier, onClick = {
-                toast(context = context, "BottomContainer Click")
+                toast(navController.context, "BottomContainer Click")
             })
         }
 

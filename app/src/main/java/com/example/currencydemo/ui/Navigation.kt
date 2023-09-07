@@ -13,12 +13,12 @@ import com.example.currencydemo.utilities.CURRENCY_SCREEN
 import com.example.currencydemo.utilities.HOME_SCREEN
 
 @Composable
-fun Navigation(context:Context) {
+fun Navigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = HOME_SCREEN) {
         composable(route = HOME_SCREEN) {
-            HomeScreen(context = context ,navController)
+            HomeScreen(navController)
         }
         composable(route = CURRENCY_SCREEN) {
             CurrencyScreen(navController)
