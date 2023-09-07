@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import android.widget.Toast
 
 object Utils {
     fun isOnline(context: Context): Boolean {
@@ -33,5 +34,9 @@ object Utils {
         } catch (e: Exception) {
             false
         }
+    }
+
+    fun toast(context: Context,msg:String){
+        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
     }
 }

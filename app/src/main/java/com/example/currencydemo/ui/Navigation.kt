@@ -1,6 +1,7 @@
 package com.example.currencydemo.ui
 
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -11,14 +12,13 @@ import com.example.currencydemo.ui.screens.HomeScreen
 import com.example.currencydemo.utilities.CURRENCY_SCREEN
 import com.example.currencydemo.utilities.HOME_SCREEN
 
-@Preview(showBackground = true, widthDp = 360, heightDp = 800)
 @Composable
-fun Navigation() {
+fun Navigation(context:Context) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = HOME_SCREEN) {
         composable(route = HOME_SCREEN) {
-            HomeScreen(navController)
+            HomeScreen(context = context ,navController)
         }
         composable(route = CURRENCY_SCREEN) {
             CurrencyScreen(navController)

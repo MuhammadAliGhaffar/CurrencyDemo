@@ -1,5 +1,6 @@
 package com.example.currencydemo.ui.screens
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,9 +28,10 @@ import com.example.currencydemo.ui.theme.TopContainerColor
 import com.example.currencydemo.ui.theme.boxWidth
 import com.example.currencydemo.ui.theme.dividerHeight
 import com.example.currencydemo.utilities.CURRENCY_SCREEN
+import com.example.currencydemo.utilities.Utils.toast
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(context: Context, navController: NavController) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -245,7 +247,9 @@ fun HomeScreen(navController: NavController) {
                 )
             }
 
-            BottomContainer(modifier = Modifier)
+            BottomContainer(modifier = Modifier, onClick = {
+                toast(context = context, "BottomContainer Click")
+            })
         }
 
     }

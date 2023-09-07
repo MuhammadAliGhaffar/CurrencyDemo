@@ -20,13 +20,13 @@ import com.example.currencydemo.ui.theme.DateTimeColor
 import com.example.currencydemo.utilities.HOME_SCREEN
 
 @Composable
-fun BottomContainer(modifier: Modifier) {
+fun BottomContainer(modifier: Modifier, onClick: () -> Unit) {
     ConstraintLayout(
         modifier = modifier
             .fillMaxWidth()
             .padding(18.dp)
     ) {
-        val (reload, time, currentCurrencyCalculate) = createRefs()
+        val (reload, time) = createRefs()
         Image(
             painter = painterResource(R.drawable.ic_reload),
             contentDescription = "backButton",
@@ -38,7 +38,7 @@ fun BottomContainer(modifier: Modifier) {
                     centerVerticallyTo(parent)
                 }
                 .clickable {
-
+                    onClick()
                 })
 
         Column(modifier = modifier.constrainAs(time) {
