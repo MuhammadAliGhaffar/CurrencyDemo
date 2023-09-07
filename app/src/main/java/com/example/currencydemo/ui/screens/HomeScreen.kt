@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
+import com.example.currencydemo.ui.composables.BottomContainer
 import com.example.currencydemo.ui.composables.BoxWithEqualWidth
 import com.example.currencydemo.ui.composables.CurrencyContainer
 import com.example.currencydemo.ui.theme.Bg
@@ -34,30 +35,44 @@ fun HomeScreen(navController: NavController) {
             .fillMaxSize()
             .background(color = Bg)
     ) {
+        val (firstCurrencyContainer, secondCurrencyContainer, divider, middleContainer, bottomContainer) = createRefs()
 
-        Column(
+        CurrencyContainer(modifier = Modifier.constrainAs(firstCurrencyContainer) {
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            top.linkTo(parent.top)
+        }, onClick = {
+            Log.d("AliTag", "T1")
+            navController.navigate(CURRENCY_SCREEN)
+        })
+        Divider(
+            color = DividerColor,
             modifier = Modifier
+                .height(dividerHeight)
                 .fillMaxWidth()
-        ) {
-            CurrencyContainer {
-                Log.d("AliTag", "T1")
-                navController.navigate(CURRENCY_SCREEN)
-            }
-            Divider(
-                color = DividerColor,
-                modifier = Modifier
-                    .height(dividerHeight)
-                    .fillMaxWidth()
-            )
-            CurrencyContainer {
-                Log.d("AliTag", "T2")
-                navController.navigate(CURRENCY_SCREEN)
-            }
+                .constrainAs(divider) {
+                    top.linkTo(firstCurrencyContainer.bottom)
+                }
+        )
+        CurrencyContainer(modifier = Modifier.constrainAs(secondCurrencyContainer) {
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            top.linkTo(divider.bottom)
+        }, onClick = {
+            Log.d("AliTag", "T2")
+            navController.navigate(CURRENCY_SCREEN)
+        })
+
 //        Spacer(modifier = Modifier)
 //        First Row
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .constrainAs(bottomContainer) {
+                bottom.linkTo(parent.bottom)
+            }) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 BoxWithEqualWidth(
-                    value = "C",
+                    value = "c",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -65,7 +80,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "1",
+                    value = "←",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -73,7 +88,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "2",
+                    value = "⇅",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -81,7 +96,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "3",
+                    value = "/",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -91,6 +106,49 @@ fun HomeScreen(navController: NavController) {
             }
 //        Second Row
             Row(modifier = Modifier.fillMaxWidth()) {
+                BoxWithEqualWidth(
+                    value = "7",
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(boxWidth, BorderStrokeColor)
+                        .background(color = InnerContainerColor)
+                        .padding(vertical = 25.dp)
+                )
+                BoxWithEqualWidth(
+                    value = "8",
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(boxWidth, BorderStrokeColor)
+                        .background(color = InnerContainerColor)
+                        .padding(vertical = 25.dp)
+                )
+                BoxWithEqualWidth(
+                    value = "9",
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(boxWidth, BorderStrokeColor)
+                        .background(color = InnerContainerColor)
+                        .padding(vertical = 25.dp)
+                )
+                BoxWithEqualWidth(
+                    value = "×",
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(boxWidth, BorderStrokeColor)
+                        .background(color = RightContainerColor)
+                        .padding(vertical = 25.dp)
+                )
+            }
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                BoxWithEqualWidth(
+                    value = "4",
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(boxWidth, BorderStrokeColor)
+                        .background(color = InnerContainerColor)
+                        .padding(vertical = 25.dp)
+                )
                 BoxWithEqualWidth(
                     value = "5",
                     modifier = Modifier
@@ -108,15 +166,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "7",
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(boxWidth, BorderStrokeColor)
-                        .background(color = InnerContainerColor)
-                        .padding(vertical = 25.dp)
-                )
-                BoxWithEqualWidth(
-                    value = "8",
+                    value = "-",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -127,7 +177,7 @@ fun HomeScreen(navController: NavController) {
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 BoxWithEqualWidth(
-                    value = "9",
+                    value = "1",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -135,7 +185,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "10",
+                    value = "2",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -143,7 +193,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "11",
+                    value = "3",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -151,7 +201,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "12",
+                    value = "+",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -162,7 +212,7 @@ fun HomeScreen(navController: NavController) {
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 BoxWithEqualWidth(
-                    value = "13",
+                    value = "0",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -170,7 +220,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "14",
+                    value = ".",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -178,7 +228,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "15",
+                    value = "%",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -186,7 +236,7 @@ fun HomeScreen(navController: NavController) {
                         .padding(vertical = 25.dp)
                 )
                 BoxWithEqualWidth(
-                    value = "16",
+                    value = "=",
                     modifier = Modifier
                         .weight(1f)
                         .border(boxWidth, BorderStrokeColor)
@@ -195,42 +245,8 @@ fun HomeScreen(navController: NavController) {
                 )
             }
 
-            Row(modifier = Modifier.fillMaxWidth()) {
-                BoxWithEqualWidth(
-                    value = "17",
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(boxWidth, BorderStrokeColor)
-                        .background(color = InnerContainerColor)
-                        .padding(vertical = 25.dp)
-                )
-                BoxWithEqualWidth(
-                    value = "18",
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(boxWidth, BorderStrokeColor)
-                        .background(color = InnerContainerColor)
-                        .padding(vertical = 25.dp)
-                )
-                BoxWithEqualWidth(
-                    value = "19",
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(boxWidth, BorderStrokeColor)
-                        .background(color = InnerContainerColor)
-                        .padding(vertical = 25.dp)
-                )
-                BoxWithEqualWidth(
-                    value = "20",
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(boxWidth, BorderStrokeColor)
-                        .background(color = RightContainerColor)
-                        .padding(vertical = 25.dp)
-                )
-            }
-
-
+            BottomContainer(modifier = Modifier)
         }
+
     }
 }

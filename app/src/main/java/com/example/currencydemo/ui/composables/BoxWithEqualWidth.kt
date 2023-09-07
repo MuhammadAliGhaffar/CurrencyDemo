@@ -18,7 +18,7 @@ fun BoxWithEqualWidth(
     Box(
         modifier = modifier
     ) {
-        Text(text = value,fontSize = 20.sp, fontWeight = FontWeight.Bold , color = Color.White, modifier = Modifier.align(
+        Text(text = value,fontSize = 25.sp, fontWeight = FontWeight(300) , color = Color.White, modifier = Modifier.align(
             Alignment.Center))
     }
 }

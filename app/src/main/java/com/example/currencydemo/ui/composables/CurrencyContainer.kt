@@ -21,9 +21,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.currencydemo.R
 
 @Composable
-fun CurrencyContainer(onClick: () -> Unit) {
+fun CurrencyContainer(onClick: () -> Unit,modifier: Modifier) {
     ConstraintLayout(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable { onClick() }
 //        .background(color = Color.LightGray)
