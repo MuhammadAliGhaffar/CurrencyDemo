@@ -7,6 +7,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.currencydemo.R
 import com.example.currencydemo.data.repository.Repository
+import com.example.currencydemo.data.utilities.API_KEY
 import com.example.currencydemo.data.utilities.NetworkResult
 import com.example.currencydemo.data.utilities.Utils.toast
 import dagger.assisted.Assisted
@@ -24,7 +25,7 @@ class AppWorker @AssistedInject constructor(
 ) : CoroutineWorker(appContext, workerParams) {
     override suspend fun doWork(): Result {
         withContext(Dispatchers.IO) {
-            repository.getCurrencies(applicationContext.getString(R.string.api_key)).onEach {
+            repository.getCurrencies(API_KEY).onEach {
                 when (it) {
                     is NetworkResult.Success -> {
 

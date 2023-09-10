@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
-const val BASE_URL = "https://api.exchangeratesapi.io/"
+const val BASE_URL = "http://api.exchangeratesapi.io/"
 const val URL_CURRENCIES = "v1/latest"
 interface DialerApi {
 

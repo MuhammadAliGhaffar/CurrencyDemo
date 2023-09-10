@@ -80,10 +80,12 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.7.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
     //ConstraintLayout
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0-alpha01")
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     //Coroutine + Flow

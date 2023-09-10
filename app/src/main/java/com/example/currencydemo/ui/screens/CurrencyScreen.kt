@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -22,17 +23,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.currencydemo.R
-import com.example.currencydemo.data.model.Currency
+import com.example.currencydemo.data.utilities.Utils.toast
 import com.example.currencydemo.ui.composables.CurrencyItemRow
 import com.example.currencydemo.ui.theme.Bg
 import com.example.currencydemo.ui.theme.DividerColor
 import com.example.currencydemo.ui.theme.dividerHeight
-import com.example.currencydemo.data.utilities.Utils.toast
 
 @Composable
-fun CurrencyScreen(navController: NavController) {
+fun CurrencyScreen(
+    navController: NavController,
+    mainViewModel: MainViewModel = hiltViewModel()
+) {
+    val uiState = mainViewModel.uiState.collectAsState()
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,40 +87,17 @@ fun CurrencyScreen(navController: NavController) {
         )
 
         LazyColumn(modifier = Modifier.weight(0.9f), content = {
-            items(getList()) { item ->
+            items(uiState.value.currencyList) { item ->
                 CurrencyItemRow(
                     item.countryImageValue,
                     item.countryNameValue,
                     item.currencyCodeValue
                 ) {
-                    toast(navController.context,it.countryNameValue)
+                    toast(navController.context, it.countryNameValue)
                 }
             }
         })
     }
 
 
-}
-
-fun getList(): List<Currency> {
-    return listOf(
-        Currency(R.drawable.ic_rounded_us, "US Dollar1", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar2", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar3", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar4", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar5", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar6", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar7", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar8", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar9", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar10", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar7", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar8", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar9", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar10", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar", "USD"),
-        Currency(R.drawable.ic_rounded_us, "US Dollar", "USD"),
-    )
 }
