@@ -87,13 +87,15 @@ fun CurrencyScreen(
         )
 
         LazyColumn(modifier = Modifier.weight(0.9f), content = {
-            items(uiState.value.currencyList) { item ->
-                CurrencyItemRow(
-                    item.countryImageValue,
-                    item.countryNameValue,
-                    item.currencyCodeValue
-                ) {
-                    toast(navController.context, it.countryNameValue)
+            uiState.value.currencyResponse.rates?.let {
+                items(it.getCurrenciesRates()) { item ->
+                    CurrencyItemRow(
+                        item.countryImageValue,
+                        item.countryNameValue,
+                        item.currencyCodeValue
+                    ) {
+                        toast(navController.context, it.countryNameValue)
+                    }
                 }
             }
         })

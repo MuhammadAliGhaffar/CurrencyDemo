@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.currencydemo.ui.composables.BottomContainer
 import com.example.currencydemo.ui.composables.BoxWithEqualWidth
@@ -31,7 +33,12 @@ import com.example.currencydemo.data.utilities.CURRENCY_SCREEN
 import com.example.currencydemo.data.utilities.Utils.toast
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+    navController: NavController,
+    mainViewModel: MainViewModel = hiltViewModel()
+) {
+    val uiState = mainViewModel.uiState.collectAsState()
+
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -39,14 +46,19 @@ fun HomeScreen(navController: NavController) {
     ) {
         val (firstCurrencyContainer, secondCurrencyContainer, divider, middleContainer, bottomContainer) = createRefs()
 
-        CurrencyContainer(modifier = Modifier.constrainAs(firstCurrencyContainer) {
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            top.linkTo(parent.top)
-        }, onClick = {
-            Log.d("AliTag", "T1")
-            navController.navigate(CURRENCY_SCREEN)
-        })
+        CurrencyContainer(
+            modifier = Modifier.constrainAs(firstCurrencyContainer) {
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                top.linkTo(parent.top)
+            },
+            onClick = {
+                Log.d("AliTag", "T1")
+                navController.navigate(CURRENCY_SCREEN)
+            },
+            currencyCode = uiState.value.currencyResponse.base.toString(),
+            currencyAmount = uiState.value.currencyResponse.rates?.EUR.toString()
+        )
         Divider(
             color = DividerColor,
             modifier = Modifier
@@ -56,14 +68,19 @@ fun HomeScreen(navController: NavController) {
                     top.linkTo(firstCurrencyContainer.bottom)
                 }
         )
-        CurrencyContainer(modifier = Modifier.constrainAs(secondCurrencyContainer) {
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            top.linkTo(divider.bottom)
-        }, onClick = {
-            Log.d("AliTag", "T2")
-            navController.navigate(CURRENCY_SCREEN)
-        })
+        CurrencyContainer(
+            modifier = Modifier.constrainAs(secondCurrencyContainer) {
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                top.linkTo(divider.bottom)
+            },
+            onClick = {
+                Log.d("AliTag", "T2")
+                navController.navigate(CURRENCY_SCREEN)
+            },
+            currencyCode = uiState.value.currencyResponse.base.toString(),
+            currencyAmount = uiState.value.currencyResponse.rates?.EUR.toString()
+        )
 
 //        Spacer(modifier = Modifier)
 //        First Row
@@ -303,8 +320,7 @@ fun HomeScreen(navController: NavController) {
                         }
                         .border(boxWidth, BorderStrokeColor)
                         .background(color = RightContainerColor)
-                        .padding(vertical = 25.dp)
-                        ,
+                        .padding(vertical = 25.dp),
 
                     )
             }

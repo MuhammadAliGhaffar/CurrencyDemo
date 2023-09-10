@@ -38,9 +38,9 @@ class MainViewModel @Inject constructor(
             repository.getCurrencies(API_KEY).onEach { value ->
                 when (value) {
                     is NetworkResult.Success -> {
-                        persistenceStorage.setCurrencies(value.data)
-                        value.data?.rates?.getCurrenciesRates()?.let {
-                            _uiState.value.currencyList = it
+                        value.data?.let {
+                            persistenceStorage.setCurrencies(it)
+                            _uiState.value.currencyResponse = it
                         }
                     }
 
@@ -51,8 +51,8 @@ class MainViewModel @Inject constructor(
 
                     is NetworkResult.Error -> {
                         if (value.message.equals("Api call failed Unable to resolve host \"api.exchangeratesapi.io\": No address associated with hostname") || !Utils.internetIsConnected())
-                            persistenceStorage.getCurrencies().rates?.getCurrenciesRates()?.let {
-                                _uiState.value.currencyList = it
+                            persistenceStorage.getCurrencies().let {
+                                _uiState.value.currencyResponse = it
                             }
                         Log.d("_debug", "error ${value.data?.success}")
                     }

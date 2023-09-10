@@ -21,7 +21,12 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.currencydemo.R
 
 @Composable
-fun CurrencyContainer(onClick: () -> Unit,modifier: Modifier) {
+fun CurrencyContainer(
+    onClick: () -> Unit,
+    modifier: Modifier,
+    currencyCode: String,
+    currencyAmount: String
+) {
     ConstraintLayout(
         modifier = modifier
             .fillMaxWidth()
@@ -46,7 +51,7 @@ fun CurrencyContainer(onClick: () -> Unit,modifier: Modifier) {
         )
 
         Text(
-            text = "USD",
+            text = currencyCode,
             color = Color.White,
             fontSize = 12.sp,
             fontWeight = FontWeight.Light,
@@ -56,7 +61,7 @@ fun CurrencyContainer(onClick: () -> Unit,modifier: Modifier) {
             })
 
 
-        Text(text = "1000".toFloat().toString(),
+        Text(text = currencyAmount,
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
