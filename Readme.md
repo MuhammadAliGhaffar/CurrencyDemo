@@ -11,5 +11,5 @@
 9. Local Caching: Shared Preferences are utilized for local caching within the app, ensuring that user preferences and settings are saved and loaded efficiently.
 
 
-<img src="https://github.com/MuhammadAliGhaffar/CurrencyDemo/blob/master/screenshot/homescreen.png" width="200">
-<img src="https://github.com/MuhammadAliGhaffar/CurrencyDemo/blob/master/screenshot/currencyscreen.png" width="200">
+<img src="https://github.com/MuhammadAliGhaffar/CurrencyDemo/blob/master/screenshots/homescreen.png" width="200">
+<img src="https://github.com/MuhammadAliGhaffar/CurrencyDemo/blob/master/screenshots/currencyscreen.png" width="200">
