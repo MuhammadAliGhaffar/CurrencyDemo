@@ -8,7 +8,7 @@ data class Currency(
     val currencyCodeValue: String
 )
 
-data class CurrencyData(
+data class CurrencyResponse(
     @SerializedName("success")
     val success: Boolean? = false,
     @SerializedName("timestamp") 

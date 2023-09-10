@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.currencydemo.R
 import com.example.currencydemo.ui.theme.DateTimeColor
-import com.example.currencydemo.utilities.HOME_SCREEN
 
 @Composable
 fun BottomContainer(modifier: Modifier, onClick: () -> Unit) {

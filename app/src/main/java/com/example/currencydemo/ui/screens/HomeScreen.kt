@@ -27,8 +27,8 @@ import com.example.currencydemo.ui.theme.RightContainerColor
 import com.example.currencydemo.ui.theme.TopContainerColor
 import com.example.currencydemo.ui.theme.boxWidth
 import com.example.currencydemo.ui.theme.dividerHeight
-import com.example.currencydemo.utilities.CURRENCY_SCREEN
-import com.example.currencydemo.utilities.Utils.toast
+import com.example.currencydemo.data.utilities.CURRENCY_SCREEN
+import com.example.currencydemo.data.utilities.Utils.toast
 
 @Composable
 fun HomeScreen(navController: NavController) {

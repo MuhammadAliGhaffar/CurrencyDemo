@@ -1,6 +1,5 @@
 package com.example.currencydemo.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -31,6 +29,7 @@ import com.example.currencydemo.ui.composables.CurrencyItemRow
 import com.example.currencydemo.ui.theme.Bg
 import com.example.currencydemo.ui.theme.DividerColor
 import com.example.currencydemo.ui.theme.dividerHeight
+import com.example.currencydemo.data.utilities.Utils.toast
 
 @Composable
 fun CurrencyScreen(navController: NavController) {
@@ -87,7 +86,7 @@ fun CurrencyScreen(navController: NavController) {
                     item.countryNameValue,
                     item.currencyCodeValue
                 ) {
-                    Log.d("AliTag", it.countryNameValue)
+                    toast(navController.context,it.countryNameValue)
                 }
             }
         })
